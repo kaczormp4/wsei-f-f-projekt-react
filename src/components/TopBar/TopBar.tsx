@@ -9,7 +9,7 @@ const Wrapper2 = styled(Wrapper)`
 function TopBar() {
     return (
         <Wrapper2>
-            s
+            sd
         </Wrapper2>
     )
 }
