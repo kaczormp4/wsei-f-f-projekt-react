@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+
 import TopBar from '../TopBar/TopBar';
 import LeftMenu from '../LeftMenu/LeftMenu';
 import MainContent from '../MainContent/MainContent';
