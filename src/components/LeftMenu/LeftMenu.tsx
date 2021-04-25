@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Ic from '../icons/I';
 
+const EmptyBox = styled.div`
+    display:flex;
+    align-items: center;
+`;
 const LeftMain = styled.div`
     width:400px;
     height:auto;
@@ -37,8 +42,11 @@ const LeftMainPhotoBoxBottomList = styled.ul`
 `;
 const LeftMainPhotoBoxBottomContent = styled.li`
     list-style-type: none;
-    padding-bottom:10px;
-    text-align:left;
+    padding-bottom: 10px;
+    text-align: left;
+    display: flex;
+    justify-content:space-between;
+    width:90%;
 `;
 const ListBelowPhotoBox = styled.ul`
 
@@ -65,23 +73,40 @@ function LeftMenu() {
                 <LeftMainPhotoBoxBottom>
                     <LeftMainPhotoBoxBottomList>
                         <LeftMainPhotoBoxBottomContent>
-                            Your network
+                            <EmptyBox>
+                                <Ic iconName="network.png"/>
+                                Your network
+                            </EmptyBox>
+                            <Ic iconName="user-plus.svg" border={true}/>
                         </LeftMainPhotoBoxBottomContent>
                         <LeftMainPhotoBoxBottomContent>
-                            Your Publications
+                            <EmptyBox>                               
+                                <Ic iconName="publications.svg"/>
+                                Your Publications
+                            </EmptyBox>
+                            <Ic iconName="plus.svg" border={true}/>
                         </LeftMainPhotoBoxBottomContent>
                     </LeftMainPhotoBoxBottomList>
                 </LeftMainPhotoBoxBottom>
             </LeftMainPhotoBox>
             <ListBelowPhotoBox>
                 <ListBelowPhotoBoxContent>
-                Publications
+                    <EmptyBox> 
+                        <Ic iconName="publications.svg"/>
+                        Publications
+                    </EmptyBox> 
                 </ListBelowPhotoBoxContent>
                 <ListBelowPhotoBoxContent>
-                Ecosystem
+                    <EmptyBox> 
+                        <Ic iconName="ecosystem.svg"/>
+                        Ecosystem
+                    </EmptyBox> 
                 </ListBelowPhotoBoxContent>
                 <ListBelowPhotoBoxContent>
-                Entities
+                    <EmptyBox> 
+                        <Ic iconName="entities.svg"/>
+                        Entities
+                    </EmptyBox> 
                 </ListBelowPhotoBoxContent>
             </ListBelowPhotoBox>
         </LeftMain>

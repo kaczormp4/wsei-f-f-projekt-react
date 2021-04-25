@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import {Wrapper} from '../../styleHelpers/Components';
 import Ic from '../icons/I';
+import OpenMenu from './OpenMenu/OpenMenu';
 
+const EmptyBox = styled.div`
+
+`;
 const Wrapper2 = styled(Wrapper)`
     box-sizing:border-box;
     padding-top:10px;
@@ -14,8 +18,15 @@ const Wrapper2 = styled(Wrapper)`
     justify-content:space-between;
 `;
 const LeftSite = styled.div`
-
+    display:flex;
+    align-items: center;
+    cursor:pointer;
+    span {
+        width:300px;
+        text-align:left;
+    }
 `;
+
 const SearchBar = styled.div`
     outline:2px solid black;
     box-sizing:border-box;
@@ -31,16 +42,21 @@ const SearchBarInput = styled.input`
 const RightSite = styled.div`
 
 `;
+const handleMenuOpen  = () => {
+    console.log("ss")
+};
 
 function TopBar() {
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <Wrapper2>
-            <LeftSite>
+            <LeftSite onClick={() => setIsOpen(!isOpen)}>
                 <Ic iconName={"logo.png"}/>
                 <Ic iconName={"house2.svg"}/>
-                Home
-                <Ic iconName={"arrow-down.svg"}/>
+                <span>Home</span>
+                <Ic iconName={"arrow-down.svg"}/>            
             </LeftSite>
+            {isOpen && <OpenMenu/>}
             <SearchBar>
                 <SearchBarInput placeholder="Search Legalcluster"/>
                 <Ic iconName={"search.svg"}/>
