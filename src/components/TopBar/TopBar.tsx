@@ -56,7 +56,7 @@ function TopBar() {
                 <span>Home</span>
                 <Ic iconName={"arrow-down.svg"}/>            
             </LeftSite>
-            {isOpen && <OpenMenu/>}
+            {isOpen ? <OpenMenu isHide={true}/> : <OpenMenu isHide={false}/>}
             <SearchBar>
                 <SearchBarInput placeholder="Search Legalcluster"/>
                 <Ic iconName={"search.svg"}/>

@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { isConstructorDeclaration } from 'typescript';
 import Ic from '../../icons/I';
 
-const MenuOpen = styled.div`
+const MenuOpen = styled.div<{isHide?: boolean}>`
     width:250px;
     height:auto;
-    border: 3px solid green;
     background-color: white;
     z-index: 999;
     position: absolute;
-    left: 00px;
+    border: 3px solid #eeeeee;
+    box-sizing:border-box;
     top: 60px;//zrobic zmienna, wartosci ustawione na sztuwno
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+    
+    ${props => props.isHide 
+        ? css`left: -350px;transform: rotate3d(200, 1, 1, 45deg);opacity:0.4`
+        : css`left: 0px;`
+        }
 `;
 const ChoosedOption = styled.div`
 `;
@@ -43,9 +50,9 @@ const LogOut = styled.div`
     display:flex;
     align-items:center;
 `;
-function OpenMenu() {
+function OpenMenu(props : {isHide?: boolean}) {
     return (
-        <MenuOpen>
+        <MenuOpen isHide={props.isHide}>
             <ChoosedOption>
                 ARLEADY CHOOSED OPTION
             </ChoosedOption>
