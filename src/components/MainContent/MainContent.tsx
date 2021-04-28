@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import WorkspacesMiniBox from './Workspaces/WorkspacesMiniBox';
+import data from './data';
 
 const ContainerContent = styled.div`
     width: calc(100% - 400px);
@@ -32,17 +34,7 @@ const WorkSpacesBox = styled.div`
     display: none;
   } */
 `;
-const WorkSpacesMiniBoxes = styled.div`
-    width: 350px;
-    height: 250px;
-    background-color:white;
-    box-shadow: 0 0 5px 1px #dfdfdf;
-    display:flex;
-    margin:2px;
-    margin-right:20px;
-    flex: 0 0 auto;
 
-`;
 const ResumeYourWorkContainer = styled.div`
     width: 90%;
     margin-top:20px;
@@ -63,6 +55,18 @@ const Footer = styled.div`
     margin-top:20px;
 `;
 
+const renderWorkspacesMiniBox = data.allData.map(dt => 
+    <WorkspacesMiniBox
+        urlImage={dt.banner} 
+        urlIcon={dt.icon}
+        mainTitle={dt.title}
+        smallIcon1={dt.smallIcon}
+        smallIcon1Type={dt.smallIconType}
+        smallIcon2={dt.smallIcon2}
+        smallIcon2Count={dt.userCount}
+        lastUpdate={dt.lastUpdate}
+        />
+    )
 function MainContent() {
     return (
         <ContainerContent>
@@ -75,15 +79,10 @@ function MainContent() {
                     s
                 </FirstContentRight>
             </FirstBox>
-            
+            Workspaces
             <WorkSpacesBox>
-                
-              <WorkSpacesMiniBoxes></WorkSpacesMiniBoxes>
-              <WorkSpacesMiniBoxes></WorkSpacesMiniBoxes>
-              <WorkSpacesMiniBoxes></WorkSpacesMiniBoxes>
-              <WorkSpacesMiniBoxes></WorkSpacesMiniBoxes>
-              <WorkSpacesMiniBoxes></WorkSpacesMiniBoxes>
-              <WorkSpacesMiniBoxes></WorkSpacesMiniBoxes>
+                {renderWorkspacesMiniBox}
+              
             </WorkSpacesBox>
             <ResumeYourWorkContainer>
                 <ResumeYWCFilterBar>
