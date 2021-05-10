@@ -60,6 +60,26 @@ const data = {
             smallIcon2:"[||]",
             userCount:"22",
             lastUpdate:"4",
+        },
+        {
+            banner:"https://i.dobrzemieszkaj.pl/i/48/54/01/r3/1920/industrialne-biuro-zobaczcie-wnetrza-zaprojektowane-dla-programistow.jpg",
+            icon:"HERE ICON",
+            title:"Supplier contract",
+            smallIcon:"[||]",
+            smallIconType:"Contract",
+            smallIcon2:"[||]",
+            userCount:"22",
+            lastUpdate:"4",
+        },
+        {
+            banner:"https://i.dobrzemieszkaj.pl/i/48/54/01/r3/1920/industrialne-biuro-zobaczcie-wnetrza-zaprojektowane-dla-programistow.jpg",
+            icon:"HERE ICON",
+            title:"Supplier contract",
+            smallIcon:"[||]",
+            smallIconType:"Contract",
+            smallIcon2:"[||]",
+            userCount:"22",
+            lastUpdate:"4",
         }
     ]
 

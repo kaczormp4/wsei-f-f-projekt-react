@@ -91,4 +91,4 @@ function OpenMenu(props : {isHide?: boolean}) {
     )
 }
 
-export default OpenMenu
+export default OpenMenu;

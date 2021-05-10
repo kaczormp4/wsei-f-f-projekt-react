@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import WorkspacesMiniBox from './Workspaces/WorkspacesMiniBox';
+import ResumeYourWork from './ResumeYourWork/ResumeYourWork';
+import LatestPublications from './LatestPublications/LatestPublications';
 import data from './data';
 
 const ContainerContent = styled.div`
@@ -11,17 +13,6 @@ const FirstBox = styled.div`
     background-color:white;
     box-shadow: 0 0 5px 1px #dfdfdf;
     display:flex;
-`;
-const FirstPhotoLeft = styled.div`
-    width: 400px;
-    height: 400px;
-    background-color:#0b8a00;
-    box-shadow: 0 0 5px 1px #dfdfdf;
-`;
-const FirstContentRight = styled.div`
-    width: calc(100% - 400px);
-    background-color:white;
-    box-shadow: 0 0 5px 1px #dfdfdf;
 `;
 
 const WorkSpacesBox = styled.div`
@@ -39,16 +30,7 @@ const ResumeYourWorkContainer = styled.div`
     width: 90%;
     margin-top:20px;
 `;
-const ResumeYWCFilterBar = styled.div`
-    width: 100%;
-`;
-const ResumeYWCBoxContent = styled.div`
-    width: 100%;
-    height: 100px;
-    background-color:white;
-    box-shadow: 0 0 5px 1px #dfdfdf;
-    margin-top:20px;
-`;
+
 const Footer = styled.div`
     width: 90%;
     height: 50px;
@@ -72,38 +54,14 @@ function MainContent() {
         <ContainerContent>
 
             <FirstBox>
-                <FirstPhotoLeft>
-                    Esse nulla laboris nostrud cupidatat nulla.
-                </FirstPhotoLeft>
-                <FirstContentRight>
-                    s
-                </FirstContentRight>
+                <LatestPublications/>
             </FirstBox>
             Workspaces
             <WorkSpacesBox>
-                {renderWorkspacesMiniBox}
-              
+                {renderWorkspacesMiniBox}            
             </WorkSpacesBox>
             <ResumeYourWorkContainer>
-                <ResumeYWCFilterBar>
-                    RESUME YOUR WORK
-                </ResumeYWCFilterBar>
-          
-                <ResumeYWCBoxContent>
-                i
-                </ResumeYWCBoxContent>
-
-                <ResumeYWCBoxContent>
-                i
-                </ResumeYWCBoxContent>
-
-                <ResumeYWCBoxContent>
-                i
-                </ResumeYWCBoxContent>
-
-                <ResumeYWCBoxContent>
-                i
-                </ResumeYWCBoxContent>
+                <ResumeYourWork/>
             </ResumeYourWorkContainer>
             <Footer>
                 next 1 2 3 4 prv

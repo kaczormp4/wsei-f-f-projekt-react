@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
 const WorkSpacesMiniBoxes = styled.div`
     width: 350px;
     height: 250px;
@@ -11,11 +12,13 @@ const WorkSpacesMiniBoxes = styled.div`
     border-radius: 5px;
     
 `;
-const WmbBannerPhoto = styled.div`
+const WmbBannerPhoto = styled.div<{styleSrc: string}>`
     width: 100%;
     height: 120px;
     border-radius: 5px 5px 0 0;
-    border:1px solid red;
+    background-image: url(${props => props.styleSrc});
+    background-size: cover; 
+    background-position: center;
     img {
         width:100%;
         height:100%;
@@ -66,8 +69,7 @@ function WorkspacesMiniBox(props:any) {
     return (
         <div>
             <WorkSpacesMiniBoxes>
-              <WmbBannerPhoto>
-                  <img src={props.urlImage}></img>
+              <WmbBannerPhoto styleSrc={props.urlImage}> 
               </WmbBannerPhoto>
               <WmbLogoAndTittleBox>
                 <WmbLogoBox>
