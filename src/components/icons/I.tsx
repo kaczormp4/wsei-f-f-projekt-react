@@ -6,7 +6,10 @@ const I = styled.img<{border?: boolean, size?: any}>`
     padding:2px;
     transform: scale(${props => props.size});
     ${props => props.border && css`
-        border: 2px solid black;
+        border: 2px solid #616161;
+        border-radius: 4px;
+        padding-right: 7px;
+        padding-left: 7px;
     `}
 `;
 

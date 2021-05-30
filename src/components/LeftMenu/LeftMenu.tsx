@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Ic from '../icons/I';
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
 
 const EmptyBox = styled.div`
     display:flex;
@@ -59,57 +61,59 @@ const ListBelowPhotoBoxContent = styled.li`
 
 function LeftMenu() {
     return (
-        <LeftMain>
-            <LeftMainPhotoBox>
-            <br/> 
-                <LeftMainPhotoBoxTop>
-                    <LeftMainPhotoBoxAvatar>
-                    photo
-                    </LeftMainPhotoBoxAvatar>       
-                    Name Surname
-                    <br/>    
-                    Job title - Company
-                </LeftMainPhotoBoxTop>  
-                <LeftMainPhotoBoxBottom>
-                    <LeftMainPhotoBoxBottomList>
-                        <LeftMainPhotoBoxBottomContent>
-                            <EmptyBox>
-                                <Ic iconName="network.png"/>
-                                Your network
-                            </EmptyBox>
-                            <Ic iconName="user-plus.svg" border={true}/>
-                        </LeftMainPhotoBoxBottomContent>
-                        <LeftMainPhotoBoxBottomContent>
-                            <EmptyBox>                               
-                                <Ic iconName="publications.svg"/>
-                                Your Publications
-                            </EmptyBox>
-                            <Ic iconName="plus.svg" border={true}/>
-                        </LeftMainPhotoBoxBottomContent>
-                    </LeftMainPhotoBoxBottomList>
-                </LeftMainPhotoBoxBottom>
-            </LeftMainPhotoBox>
-            <ListBelowPhotoBox>
-                <ListBelowPhotoBoxContent>
-                    <EmptyBox> 
-                        <Ic iconName="publications.svg"/>
-                        Publications
-                    </EmptyBox> 
-                </ListBelowPhotoBoxContent>
-                <ListBelowPhotoBoxContent>
-                    <EmptyBox> 
-                        <Ic iconName="ecosystem.svg"/>
-                        Ecosystem
-                    </EmptyBox> 
-                </ListBelowPhotoBoxContent>
-                <ListBelowPhotoBoxContent>
-                    <EmptyBox> 
-                        <Ic iconName="entities.svg"/>
-                        Entities
-                    </EmptyBox> 
-                </ListBelowPhotoBoxContent>
-            </ListBelowPhotoBox>
-        </LeftMain>
+            <LeftMain>
+                <LeftMainPhotoBox>
+                <br/> 
+                    <LeftMainPhotoBoxTop>
+                        <Link to='/user' >
+                            <LeftMainPhotoBoxAvatar>
+                            photo
+                            </LeftMainPhotoBoxAvatar>       
+                            Name Surname
+                        </Link>
+                        <br/>    
+                        Job title - Company
+                    </LeftMainPhotoBoxTop>  
+                    <LeftMainPhotoBoxBottom>
+                        <LeftMainPhotoBoxBottomList>
+                            <LeftMainPhotoBoxBottomContent>
+                                <EmptyBox>
+                                    <Ic iconName="network.png"/>
+                                    Your network
+                                </EmptyBox>
+                                <Ic iconName="user-plus.svg" border={true}/>
+                            </LeftMainPhotoBoxBottomContent>
+                            <LeftMainPhotoBoxBottomContent>
+                                <EmptyBox>                               
+                                    <Ic iconName="publications.svg"/>
+                                    Your Publications
+                                </EmptyBox>
+                                <Ic iconName="plus.svg" border={true}/>
+                            </LeftMainPhotoBoxBottomContent>
+                        </LeftMainPhotoBoxBottomList>
+                    </LeftMainPhotoBoxBottom>
+                </LeftMainPhotoBox>
+                <ListBelowPhotoBox>
+                    <ListBelowPhotoBoxContent>
+                        <EmptyBox> 
+                            <Ic iconName="publications.svg"/>
+                            Publications
+                        </EmptyBox> 
+                    </ListBelowPhotoBoxContent>
+                    <ListBelowPhotoBoxContent>
+                        <EmptyBox> 
+                            <Ic iconName="ecosystem.svg"/>
+                            Ecosystem
+                        </EmptyBox> 
+                    </ListBelowPhotoBoxContent>
+                    <ListBelowPhotoBoxContent>
+                        <EmptyBox> 
+                            <Ic iconName="entities.svg"/>
+                            Entities
+                        </EmptyBox> 
+                    </ListBelowPhotoBoxContent>
+                </ListBelowPhotoBox>
+            </LeftMain>
     )
 }
 

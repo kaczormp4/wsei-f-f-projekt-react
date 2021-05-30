@@ -28,7 +28,7 @@ const LeftSite = styled.div`
 `;
 
 const SearchBar = styled.div`
-    outline:2px solid black;
+    outline:2px solid #838383;
     box-sizing:border-box;
     padding-top:2px;
 `;
@@ -58,7 +58,7 @@ function TopBar() {
             </LeftSite>
             {isOpen ? <OpenMenu isHide={true}/> : <OpenMenu isHide={false}/>}
             <SearchBar>
-                <SearchBarInput placeholder="Search Legalcluster"/>
+                <SearchBarInput placeholder=" Search Legalcluster"/>
                 <Ic iconName={"search.svg"}/>
             </SearchBar>
             <RightSite>
