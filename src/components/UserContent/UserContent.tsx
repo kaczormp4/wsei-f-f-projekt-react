@@ -6,37 +6,62 @@ const UserContentContainer = styled.div`
     width: calc(100% - 400px);
 `;
 const TopNav = styled.div`
+    background-color:white;
     width: 90%;
     height: 70px;
-    background-color:white;
     display:flex;
     justify-content: flex-end;
 `;
 const UserInfo = styled.div`
+    background-color:white;
     width: 90%;
     height:300px;
-    background-color:#110e0e;
     display:flex;
 `;
 const PhotoBox = styled.div`
-    width: 30%;
+    width: auto;
     height:300px;
-    background-color:#3fc52e;
 `;
+const UserPhoto = styled.div`
+    width: 150px;
+    height: 150px;
+    background-color:#2b352a;
+    border-radius: 100px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+
+`;
+
 const MainInfo = styled.div`
-    width: 70%;
+    width: calc(100% - 200px);
     height:300px;
-    background-color:#662828;
+    display:flex;
+    justify-content: space-between;
+    div {
+        margin-top:50px;
+    }
 `;
 const About = styled.div`
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    background-color:white;
     width: 90%;
-    height:500px;
-    background-color:#db5959;
+    height: 500px;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 50px;
+    span { 
+        padding: 10px;
+        background-color: #e6f0f3;
+        margin-right: 20px;
+    }
 `;
 const PanelInformation = styled.div`
     width: 90%;
     height:500px;
-    background-color:#33a11f;
+    background-color:white;
 `;
 const SerwicesAndProjects = styled.div`
     width: 90%;
@@ -69,11 +94,31 @@ function UserContent(){
             </TopNav>
             <UserInfo>
                 <PhotoBox>
+                    <UserPhoto></UserPhoto>
+                    <span>See Profile</span>
                 </PhotoBox>
-                <MainInfo></MainInfo>
+                <MainInfo>
+                    <div>
+                        <p>Humwerta Swift</p>
+                        <p>Clifford Chance</p>
+                        <p>New Your Partner</p>
+                    </div>
+                    <div>
+                        EMAIL @!#!@!$#!@$
+                    </div>
+                </MainInfo>
             </UserInfo>
             <About>
-
+                <h1>Expertise</h1>
+                <span>Merges and acquisition</span>
+                <h1>Expertise</h1>
+                <span>Merges and acquisition</span>
+                <span>Merges and acquisition</span>
+                <h1>Expertise</h1>
+                <span>Merges and acquisition</span>
+                <span>Merges and acquisition</span>
+                <h1>Expertise</h1>
+                <span>Merges and acquisition</span>
             </About>
             <PanelInformation>
 
