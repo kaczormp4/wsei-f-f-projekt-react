@@ -4,6 +4,7 @@ import WorkspacesMiniBox from './Workspaces/WorkspacesMiniBox';
 import ResumeYourWork from './ResumeYourWork/ResumeYourWork';
 import LatestPublications from './LatestPublications/LatestPublications';
 import data from './data';
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 const ContainerContent = styled.div`
     width: calc(100% - 400px);
@@ -24,6 +25,12 @@ const WorkSpacesBox = styled.div`
     /* &::-webkit-scrollbar {
     display: none;
   } */
+  a{
+    &:link, &:visited, &:hover, &:active {
+     color: black;
+     text-decoration: none;
+    }
+  }
 `;
 
 const ResumeYourWorkContainer = styled.div`
@@ -38,16 +45,18 @@ const Footer = styled.div`
 `;
 
 const renderWorkspacesMiniBox = data.allData.map(dt => 
-    <WorkspacesMiniBox
-        urlImage={dt.banner} 
-        urlIcon={dt.icon}
-        mainTitle={dt.title}
-        smallIcon1={dt.smallIcon}
-        smallIcon1Type={dt.smallIconType}
-        smallIcon2={dt.smallIcon2}
-        smallIcon2Count={dt.userCount}
-        lastUpdate={dt.lastUpdate}
-        />
+    <Link to='/workspace'> 
+        <WorkspacesMiniBox
+            urlImage={dt.banner} 
+            urlIcon={dt.icon}
+            mainTitle={dt.title}
+            smallIcon1={dt.smallIcon}
+            smallIcon1Type={dt.smallIconType}
+            smallIcon2={dt.smallIcon2}
+            smallIcon2Count={dt.userCount}
+            lastUpdate={dt.lastUpdate}
+            />
+    </Link>
     )
 function MainContent() {
     return (

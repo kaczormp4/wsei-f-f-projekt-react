@@ -6,6 +6,7 @@ import LeftMenu from '../LeftMenu/LeftMenu';
 import MainContent from '../MainContent/MainContent';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import UserContent from './../UserContent/UserContent';
+import WorkSpaceContent from './../WorkSpaceContent/WorkSpaceContent';
 
 const Wrapper = styled.section`
 `;
@@ -27,6 +28,7 @@ function MainPage() {
                     <Switch>
                         <Route path='/' exact component={MainContent} />
                         <Route path='/user' exact component={UserContent}/>       
+                        <Route path='/workspace' exact component={WorkSpaceContent}/>       
                     </Switch>      
                 </Content>
             </Wrapper>
