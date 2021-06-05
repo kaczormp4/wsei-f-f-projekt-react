@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import styled, { css } from 'styled-components';
 import { isConstructorDeclaration } from 'typescript';
 import Ic from '../../icons/I';

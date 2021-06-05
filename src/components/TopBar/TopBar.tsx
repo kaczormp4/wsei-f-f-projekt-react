@@ -47,7 +47,7 @@ const handleMenuOpen  = () => {
 };
 
 function TopBar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     return (
         <Wrapper2>
             <LeftSite onClick={() => setIsOpen(!isOpen)}>

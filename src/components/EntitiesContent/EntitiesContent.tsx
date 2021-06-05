@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import EntitiesMiniBox from './EntitiesMiniBox/EntitiesMiniBox';
 
 const EntitiesContentContainer = styled.div`
     width: calc(100% - 400px);
@@ -10,21 +11,51 @@ const TopNav = styled.div`
     height: 70px;
     display:flex;
     justify-content: space-between;
-
+    align-items: center;
+    &>div>h3{
+        margin-left:15px;
+    }
+    &> div { 
+        display:flex;
+    }
 `;
 const FilterBar = styled.div`
     background-color:white;
     width: 90%;
     display:flex;
+    align-items: center;
+    justify-content: space-between;
     div{
         display: flex;
         align-items: center;
     }
 `;
 const FilterBarAll = styled.div`
-    border:1px solid black;
-    padding:5px;
-    margin-left:15px;
+    cursor: pointer;
+    background-color: #eaecf5;
+    box-shadow: 0 0 2px 0px #364aa3;
+    padding: 5px;
+    margin-left: 15px;
+    color: #364aa3;
+    font-weight: 600;
+    &:hover {
+        background-color: #cfffa8;
+        color: #626262;
+    }
+`;
+const DottBox = styled.div`
+    padding-bottom: 6px;
+    margin-left: 5px;
+    color: #364aa3;
+    font-weight: 800;
+    font-size: 1.5rem;
+`;
+const BorderLeft = styled.div`
+    box-sizing: border-box;
+    border-left: 1px solid gray;
+    margin-left: 5px;
+    color: grey;
+    padding: 5px;
 `;
 
 const MiniBoxesContent = styled.div`
@@ -35,13 +66,63 @@ const MiniBoxesContent = styled.div`
     flex-wrap: wrap;
     padding-bottom: 20px;
 `;
-const MiniBoxData = styled.div`
+
+const SearchBox = styled.div`
     background-color:white;
-    box-shadow: 0 0 4px 0px gray;
-    width: 250px;
-    height: 100px;
+    height: 35px;
     display:flex;
-    margin: 10px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border: 2px solid lightgray;
+    justify-content: space-between;
+    margin-right: 10px;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    &>input {
+        border:none;
+        outline:none;
+    }
+`;
+const Followed = styled.div`
+    margin-right: 15px;
+    cursor: pointer;
+    background-color: #eaecf5;
+    box-shadow: 0 0 2px 0px #364aa3;
+    padding: 5px;
+    margin-left: 15px;
+    color: #364aa3;
+    font-weight: 600;
+    &:hover {
+        background-color: #cfffa8;
+        color: #626262;
+    }
+`;
+const MosaicButton = styled.div`
+    cursor: pointer;
+    background-color: #eaecf5;
+    box-shadow: 0 0 2px 0px #364aa3;
+    padding: 5px;
+    margin-left: 15px;
+    color: #364aa3;
+    font-weight: 600;
+    &:hover {
+        background-color: #cfffa8;
+        color: #626262;
+    }
+`;
+const ListButton = styled.div`
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 0 2px 0px #364aa3;
+    padding: 5px;
+    margin-right: 15px;
+    color: #364aa3;
+    font-weight: 600;
+    &:hover {
+        background-color: #cfffa8;
+        color: #626262;
+    }
 `;
 function EntitiesContent() {
     return (
@@ -51,33 +132,44 @@ function EntitiesContent() {
                         <h3>Entities</h3>
                     </div>
                     <div>
-                        MOSAIC LIST
+                        <MosaicButton>[ICO] MOSAIC</MosaicButton>
+                        <ListButton>[ICO]</ListButton>
                     </div>
             </TopNav>
             <FilterBar>
                 <div>
                     <FilterBarAll>[ICO] ALL [ICO]</FilterBarAll>
-                    <div>...</div>
-                    <div>SORT</div>
-                    <div>FILTERS</div>
-                    <div>ARROW</div>
-                    <div>SHARE</div>
+                    <DottBox> • • •</DottBox>
+                    <BorderLeft>[ICO]SORT [ICO]FILTERS</BorderLeft>
+                    <BorderLeft>[ICO]ARROW</BorderLeft>
+                    <BorderLeft>[ICO]SHARE</BorderLeft>
                 </div>
                 <div>
-                    
+                    <SearchBox><input></input><b>Q</b></SearchBox>
+                    <Followed>[ICO] FOLLOWED [ICO]</Followed>
                 </div>
             </FilterBar>
             <MiniBoxesContent>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
-                <MiniBoxData></MiniBoxData>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
+              <EntitiesMiniBox/>
             </MiniBoxesContent>
         </EntitiesContentContainer>
     )
