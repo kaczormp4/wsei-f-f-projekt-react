@@ -12,6 +12,12 @@ const LeftMain = styled.div`
     width:400px;
     height:auto;
     background-color:rgb(245,247,249);
+    a{
+        &:link, &:visited, &:hover, &:active {
+            color: black;
+            text-decoration: none;
+        }
+    }
 `;
 const LeftMainPhotoBox = styled.div`
     width:300px;
@@ -107,10 +113,12 @@ function LeftMenu() {
                         </EmptyBox> 
                     </ListBelowPhotoBoxContent>
                     <ListBelowPhotoBoxContent>
-                        <EmptyBox> 
-                            <Ic iconName="entities.svg"/>
-                            Entities
-                        </EmptyBox> 
+                        <Link to='/entities' >
+                            <EmptyBox> 
+                                <Ic iconName="entities.svg"/>
+                                Entities
+                            </EmptyBox> 
+                        </Link>
                     </ListBelowPhotoBoxContent>
                 </ListBelowPhotoBox>
             </LeftMain>

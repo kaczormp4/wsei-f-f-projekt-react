@@ -15,7 +15,12 @@ const MenuOpen = styled.div<{isHide?: boolean}>`
     top: 60px;//zrobic zmienna, wartosci ustawione na sztuwno
     transition-duration: 0.4s;
     transition-timing-function: ease-in-out;
-    
+    a{
+        &:link, &:visited, &:hover, &:active {
+            color: black;
+            text-decoration: none;
+        }
+    }
     ${props => props.isHide 
         ? css`left: -350px;transform: rotate3d(200, 1, 1, 45deg);opacity:0.4`
         : css`left: 0px;`
@@ -70,7 +75,7 @@ function OpenMenu(props : {isHide?: boolean}) {
                         <li><Link to='/'><Ic iconName="house2.svg"/> Home </Link></li>         
                         <li><Link to='/'><Ic iconName="publications.svg"/> Publications </Link></li>
                         <li><Link to='/'><Ic iconName="people.svg"/> People </Link></li>
-                        <li><Link to='/'><Ic iconName="entities2.svg"/> Entities </Link></li>
+                        <li><Link to='/entities' ><Ic iconName="entities2.svg"/> Entities </Link></li>
                         <li><Link to='/'><Ic iconName="administration.svg"/> Administration </Link></li>
                     </ul>
                 </Categories>
