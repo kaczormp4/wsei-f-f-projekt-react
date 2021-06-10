@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Ic from "../../icons/I";
 import ResumeYourWorkContent from './ResumeYourWorkContent/ResumeYourWorkContent';
+import { connect } from 'react-redux';
 
 const ResumeYWCFilterBar = styled.div`
   align-items: center;
@@ -35,7 +36,7 @@ const InputBox = styled.div`
   }
 `;
 
-function ResumeYourWork() {
+function ResumeYourWork({publications}:any) {
   return (
     <>
       <ResumeYWCFilterBar>
@@ -56,8 +57,13 @@ function ResumeYourWork() {
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
+      <div>{JSON.stringify(publications)}</div>
     </>
   );
 }
 
-export default ResumeYourWork;
+const mapStateToProps = (state:any) => ({
+  publications: state.publications
+}) 
+
+export default connect(mapStateToProps)(ResumeYourWork);
