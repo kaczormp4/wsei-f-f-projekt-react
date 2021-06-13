@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Ic from "../../icons/I";
 import ResumeYourWorkContent from './ResumeYourWorkContent/ResumeYourWorkContent';
 import { connect } from 'react-redux';
+import { getPhoto } from '../../../actions/PhotosAction'
 
 const ResumeYWCFilterBar = styled.div`
   align-items: center;
@@ -66,4 +67,9 @@ const mapStateToProps = (state:any) => ({
   publications: state.publications
 }) 
 
-export default connect(mapStateToProps)(ResumeYourWork);
+const mapDispatcToProps = (dispatch: any) => (
+  {
+    getPhoto: () => dispatch(getPhoto())
+  }
+)
+export default connect(mapStateToProps,mapDispatcToProps )(ResumeYourWork);

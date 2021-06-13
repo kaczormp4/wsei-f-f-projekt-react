@@ -1,9 +1,11 @@
 const publications = (state = ['ss'], action:any) => {
+
     switch(action.type) {
-        case 'TEST':
-            return [];
         case 'GET_PHOTO':
-            return [];
+            return [
+                ...state,
+                ['example']
+            ];
         default:
             return state;
         }

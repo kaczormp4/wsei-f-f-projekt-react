@@ -24,5 +24,6 @@ export const getPhoto = (): Promise<IPhoto[]> => ((dispatch: Dispatch) => {
                 type: GET_PHOTO,
                 photoList
             })
+            console.log(photoList)
         })
 }) as any;
