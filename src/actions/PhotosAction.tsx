@@ -26,4 +26,5 @@ export const getPhoto = (): Promise<IPhoto[]> => ((dispatch: Dispatch) => {
             })
             console.log(photoList)
         })
-}) as any;
+        .catch(err => console.log(err))
+    }) as any;
