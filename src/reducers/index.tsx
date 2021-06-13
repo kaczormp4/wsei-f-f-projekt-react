@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
-import publications from './PublicationReducer';
+
+import users, {IUsersReducer} from './usersReducers';
+
+export interface IState {
+    users: IUsersReducer;
+}
 
 export default combineReducers({
-    publications
+    users
 })

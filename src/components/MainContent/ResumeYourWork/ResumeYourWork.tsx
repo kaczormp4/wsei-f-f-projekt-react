@@ -1,8 +1,14 @@
+import Rract, { FC, useEffect } from 'react';
 import styled from "styled-components";
 import Ic from "../../icons/I";
 import ResumeYourWorkContent from './ResumeYourWorkContent/ResumeYourWorkContent';
-import { connect } from 'react-redux';
-import { getPhoto } from '../../../actions/PhotosAction'
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../../actions/usersActions'
+import { IState } from '../../../reducers'
+import { IUsersReducer } from '../../../reducers/usersReducers';
+import { stat } from 'node:fs';
+
+type GetUsers = ReturnType<typeof getUsers>
 
 const ResumeYWCFilterBar = styled.div`
   align-items: center;
@@ -37,7 +43,17 @@ const InputBox = styled.div`
   }
 `;
 
-function ResumeYourWork({publications}:any) {
+const ResumeYourWork: FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch<GetUsers>(getUsers());
+  },[]);
+
+  const { usersList } = useSelector<IState, IUsersReducer>(state => ({
+    ...state.users
+  }))
+
   return (
     <>
       <ResumeYWCFilterBar>
@@ -58,18 +74,9 @@ function ResumeYourWork({publications}:any) {
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
-      <div>{JSON.stringify(publications)}</div>
+      <div>{usersList}</div>
     </>
   );
 }
 
-const mapStateToProps = (state:any) => ({
-  publications: state.publications
-}) 
-
-const mapDispatcToProps = (dispatch: any) => (
-  {
-    getPhoto: () => dispatch(getPhoto())
-  }
-)
-export default connect(mapStateToProps,mapDispatcToProps )(ResumeYourWork);
+export default ResumeYourWork;
