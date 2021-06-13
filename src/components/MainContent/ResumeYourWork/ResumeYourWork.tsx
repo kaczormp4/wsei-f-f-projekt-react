@@ -1,14 +1,13 @@
-import Rract, { FC, useEffect } from 'react';
+import Rract, { FC } from 'react';
 import styled from "styled-components";
 import Ic from "../../icons/I";
 import ResumeYourWorkContent from './ResumeYourWorkContent/ResumeYourWorkContent';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsers } from '../../../actions/usersActions'
+import { useSelector } from 'react-redux';
 import { IState } from '../../../reducers'
 import { IUsersReducer } from '../../../reducers/usersReducers';
 import { stat } from 'node:fs';
 
-type GetUsers = ReturnType<typeof getUsers>
+
 
 const ResumeYWCFilterBar = styled.div`
   align-items: center;
@@ -44,16 +43,11 @@ const InputBox = styled.div`
 `;
 
 const ResumeYourWork: FC = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch<GetUsers>(getUsers());
-  },[]);
 
   const { usersList } = useSelector<IState, IUsersReducer>(state => ({
     ...state.users
   }))
-
+  console.log(usersList)
   return (
     <>
       <ResumeYWCFilterBar>

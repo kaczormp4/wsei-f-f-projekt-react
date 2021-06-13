@@ -11,7 +11,7 @@ const  defaultState = (): IUsersReducer => ({
     someData: 'example string'
 });
 
-const publications = (state = defaultState(), action: any) => {
+export default (state = defaultState(), action: any) => {
     switch(action.type) {
         case actionTypes.GET_USERS:{
             const data: actionTypes.IUserTypes['GET_USERS'] = action
@@ -26,4 +26,3 @@ const publications = (state = defaultState(), action: any) => {
         }
     }
 
-export default publications
