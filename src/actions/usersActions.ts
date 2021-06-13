@@ -15,7 +15,7 @@ import { ISingleUser } from '../entities/users';
 //         photoList: IPhoto[];
 //     };
 // }
-const GET_PHOTO = 'GET_PHOTO';
+// const GET_PHOTO = 'GET_PHOTO';
 
 export const getUsers = (): Promise<ISingleUser[]> => ((dispatch: Dispatch) => {
 
