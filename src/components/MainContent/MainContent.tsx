@@ -1,14 +1,12 @@
-import Rract, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import WorkspacesMiniBox from './Workspaces/WorkspacesMiniBox';
 import ResumeYourWork from './ResumeYourWork/ResumeYourWork';
 import LatestPublications from './LatestPublications/LatestPublications';
 import data from './data';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import { getUsers } from '../../actions/usersActions'
-import { useDispatch } from 'react-redux';
 
-type GetUsers = ReturnType<typeof getUsers>
+
 
 const ContainerContent = styled.div`
     width: calc(100% - 400px);
@@ -63,13 +61,7 @@ const renderWorkspacesMiniBox = data.allData.map(dt =>
     </Link>
     )
 const MainContent:FC = () => {
-    const dispatch = useDispatch();
 
-
-    useEffect(() => {
-        dispatch<GetUsers>(getUsers());
-      },[]);
-    
     return (
         <ContainerContent>
 
