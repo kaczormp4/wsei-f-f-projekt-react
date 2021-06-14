@@ -24,7 +24,7 @@ export const getUsers = (): Promise<ISingleUser[]> => ((dispatch: Dispatch) => {
         .then((usersList: ISingleUser[]) => {
             dispatch({
                 type: actionTypes.GET_USERS,
-                usersList
+                usersList: [...usersList]
             })
         })
         .catch(err => console.log(err))

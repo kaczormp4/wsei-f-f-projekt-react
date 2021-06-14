@@ -68,7 +68,7 @@ const ResumeYourWork: FC = () => {
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
-      <div>{usersList}</div>
+      {/* <div>{usersList}</div> */}
     </>
   );
 }
