@@ -7,8 +7,6 @@ import { IState } from '../../../reducers'
 import { IUsersReducer } from '../../../reducers/usersReducers';
 import { stat } from 'node:fs';
 
-
-
 const ResumeYWCFilterBar = styled.div`
   align-items: center;
   width: 100%;
@@ -47,7 +45,15 @@ const ResumeYourWork: FC = () => {
   const { usersList } = useSelector<IState, IUsersReducer>(state => ({
     ...state.users
   }))
+
+  //console.log(usersList)
+
   console.log(usersList)
+  const uuu = usersList.map(v => {
+    return (<pre>{v.name}</pre>)
+    } 
+  )
+
   return (
     <>
       <ResumeYWCFilterBar>
@@ -68,7 +74,7 @@ const ResumeYourWork: FC = () => {
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
       <ResumeYourWorkContent/>
-      {/* <div>{usersList}</div> */}
+      {uuu}
     </>
   );
 }

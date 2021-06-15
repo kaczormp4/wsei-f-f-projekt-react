@@ -28,11 +28,9 @@ const Content = styled.div`
 const MainPage: FC = () => { 
 
     const dispatch = useDispatch();
-
-
     useEffect(() => {
         dispatch<GetUsers>(getUsers());
-      },[]);
+      });
     
     
     return (
