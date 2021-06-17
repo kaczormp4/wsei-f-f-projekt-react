@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import Ic from "../../icons/I";
+import Ic from '../../../icons/I';
 
 const ResumeYWCBoxContent = styled.div`
   width: 100%;
@@ -38,8 +38,15 @@ const ResumeYWCBottomBox = styled.div`
   box-sizing: border-box;
   width: auto;
   margin-right: 10px;
+  display:flex;
+  align-items: center;
+  img{
+    margin:0;
+  }
   span{
     color:grey;
+    margin:5px;
+    padding-bottom:5px;
   }
 `;
 
@@ -51,10 +58,10 @@ function ResumeYourWorkContent(props: any) {
         <ResumeYWCCenter>{props.content}</ResumeYWCCenter>
         <ResumeYWCBottom>
             <ResumeYWCBottomBox>
-                [ ico ] TEXT
+                <Ic iconName='logout.svg'/> <span>YooHoo.corp </span>
             </ResumeYWCBottomBox>
             <ResumeYWCBottomBox>
-                [ ico ] Client Contact
+                <Ic iconName='bell.svg'/> <span>Client Contact</span>
             </ResumeYWCBottomBox>
             <ResumeYWCBottomBox>
               <span>Updates 3 days ago by John Lock</span>  

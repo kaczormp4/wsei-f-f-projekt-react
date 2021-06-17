@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import EntitiesMiniBox from './EntitiesMiniBox/EntitiesMiniBox';
-
+import Ic from '../icons/I';
 const EntitiesContentContainer = styled.div`
     width: calc(100% - 400px);
 `;
@@ -18,6 +18,9 @@ const TopNav = styled.div`
     &> div { 
         display:flex;
     }
+    img {
+        width: 20px
+    }
 `;
 const FilterBar = styled.div`
     background-color:white;
@@ -25,9 +28,13 @@ const FilterBar = styled.div`
     display:flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 10px;
     div{
         display: flex;
         align-items: center;
+        img {
+            width: 20px
+        }
     }
 `;
 const FilterBarAll = styled.div`
@@ -42,6 +49,8 @@ const FilterBarAll = styled.div`
         background-color: #cfffa8;
         color: #626262;
     }
+
+    
 `;
 const DottBox = styled.div`
     padding-bottom: 6px;
@@ -65,6 +74,7 @@ const MiniBoxesContent = styled.div`
     display:flex;
     flex-wrap: wrap;
     padding-bottom: 20px;
+    padding-top: 30px;
 `;
 
 const SearchBox = styled.div`
@@ -102,14 +112,18 @@ const MosaicButton = styled.div`
     cursor: pointer;
     background-color: #eaecf5;
     box-shadow: 0 0 2px 0px #364aa3;
-    padding: 5px;
+    padding: 10px;
     margin-left: 15px;
     color: #364aa3;
     font-weight: 600;
+    display:flex;
+    align-items: center;
+
     &:hover {
         background-color: #cfffa8;
         color: #626262;
     }
+
 `;
 const ListButton = styled.div`
     cursor: pointer;
@@ -119,6 +133,9 @@ const ListButton = styled.div`
     margin-right: 15px;
     color: #364aa3;
     font-weight: 600;
+    display:flex;
+    align-items: center;
+
     &:hover {
         background-color: #cfffa8;
         color: #626262;
@@ -132,21 +149,21 @@ function EntitiesContent() {
                         <h3>Entities</h3>
                     </div>
                     <div>
-                        <MosaicButton>[ICO] MOSAIC</MosaicButton>
-                        <ListButton>[ICO]</ListButton>
+                        <MosaicButton><Ic iconName='visualization.svg'/> MOSAIC</MosaicButton>
+                        <ListButton><Ic iconName='list.svg'/></ListButton>
                     </div>
             </TopNav>
             <FilterBar>
                 <div>
-                    <FilterBarAll>[ICO] ALL [ICO]</FilterBarAll>
+                    <FilterBarAll><Ic iconName='target.svg'/> ALL <Ic iconName='arrow-down.png' size='0.6'/></FilterBarAll>
                     <DottBox> • • •</DottBox>
-                    <BorderLeft>[ICO]SORT [ICO]FILTERS</BorderLeft>
-                    <BorderLeft>[ICO]ARROW</BorderLeft>
-                    <BorderLeft>[ICO]SHARE</BorderLeft>
+                    <BorderLeft><Ic iconName='sort.svg'/>SORT <Ic iconName='filter.svg'/> FILTERS</BorderLeft>
+                    <BorderLeft><Ic iconName='resize.svg'/>ARROW</BorderLeft>
+                    <BorderLeft><Ic iconName='share.svg'/>SHARE</BorderLeft>
                 </div>
                 <div>
                     <SearchBox><input></input><b>Q</b></SearchBox>
-                    <Followed>[ICO] FOLLOWED [ICO]</Followed>
+                    <Followed><Ic iconName='wifi-signal.svg'/> FOLLOWED <Ic iconName='arrow-down.png' size='0.6'/></Followed>
                 </div>
             </FilterBar>
             <MiniBoxesContent>

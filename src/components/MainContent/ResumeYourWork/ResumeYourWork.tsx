@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { IState } from '../../../reducers'
 import { IUsersReducer } from '../../../reducers/usersReducers';
 import { IPostReducer } from '../../../reducers/postsReducers';
+import { IPhotoReducer } from '../../../reducers/photosReducers';
 import { stat } from 'node:fs';
 import ReactPaginate from 'react-paginate';
 
@@ -102,7 +103,10 @@ const ResumeYourWork: FC = () => {
   const { postList } = useSelector<IState, IPostReducer>(state => ({
     ...state.posts
   }));
-  //console.log(usersList)
+  const { photoList } = useSelector<IState, IPhotoReducer>(state => ({
+    ...state.photos
+  }));
+  console.log(photoList)
   const [currentPage , setCurrentPage ] = useState<number>(0);
   const handlePageClick  = (data:any) => {
       const selected = data.selected;
