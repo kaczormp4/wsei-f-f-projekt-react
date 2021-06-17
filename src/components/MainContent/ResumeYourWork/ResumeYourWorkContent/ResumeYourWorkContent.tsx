@@ -43,15 +43,12 @@ const ResumeYWCBottomBox = styled.div`
   }
 `;
 
-function ResumeYourWorkContent() {
+function ResumeYourWorkContent(props: any) {
   return (
     <>
       <ResumeYWCBoxContent>
-        <ResumeYWCTop>Contract </ResumeYWCTop>
-        <ResumeYWCCenter>
-            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-            uis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, 
-        </ResumeYWCCenter>
+        <ResumeYWCTop>{props.title}</ResumeYWCTop>
+        <ResumeYWCCenter>{props.content}</ResumeYWCCenter>
         <ResumeYWCBottom>
             <ResumeYWCBottomBox>
                 [ ico ] TEXT

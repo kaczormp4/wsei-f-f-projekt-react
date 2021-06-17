@@ -1,11 +1,13 @@
-import Rract, { FC } from 'react';
+import Rract, { FC, useState } from 'react';
 import styled from "styled-components";
 import Ic from "../../icons/I";
 import ResumeYourWorkContent from './ResumeYourWorkContent/ResumeYourWorkContent';
 import { useSelector } from 'react-redux';
 import { IState } from '../../../reducers'
 import { IUsersReducer } from '../../../reducers/usersReducers';
+import { IPostReducer } from '../../../reducers/postsReducers';
 import { stat } from 'node:fs';
+import ReactPaginate from 'react-paginate';
 
 const ResumeYWCFilterBar = styled.div`
   align-items: center;
@@ -39,20 +41,74 @@ const InputBox = styled.div`
     background-color: #f5f7f9;
   }
 `;
-
+const Footer = styled.div`
+  ul,li {
+    text-decoration:none; 
+    list-style-type: none;
+  }
+  .pagination {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      color: black;
+      
+      .active {
+        color: black;
+        padding: 5px;
+        border: 1px solid grey;
+        cursor: pointer;
+      }
+      .break-me{
+        padding: 5px;
+      }
+      .page{
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+        &:hover{
+          background-color:lightgrey;
+          font-weight: 500;
+        }
+      }
+      .next{
+        padding: 5px;
+        border: 1px solid grey;
+        margin: 5px;
+        cursor: pointer;
+        &:hover{
+          background-color:lightgrey;
+          font-weight: 500;
+        }
+      }
+      .previous{
+        box-sizing: border-box;
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid grey;
+        cursor: pointer;
+        &:hover{
+          background-color:lightgrey;
+          font-weight: 500;
+        }
+      }
+}`;
 const ResumeYourWork: FC = () => {
 
   const { usersList } = useSelector<IState, IUsersReducer>(state => ({
     ...state.users
   }))
-
+  const { postList } = useSelector<IState, IPostReducer>(state => ({
+    ...state.posts
+  }));
   //console.log(usersList)
+  const [currentPage , setCurrentPage ] = useState<number>(0);
+  const handlePageClick  = (data:any) => {
+      const selected = data.selected;
+      setCurrentPage(selected);
+  }
 
-  console.log(usersList)
-  const uuu = usersList.map(v => {
-    return (<pre>{v.name}</pre>)
-    } 
-  )
 
   return (
     <>
@@ -68,13 +124,24 @@ const ResumeYourWork: FC = () => {
           </div>
         </div>
       </ResumeYWCFilterBar>
-
-      <ResumeYourWorkContent/>
-      <ResumeYourWorkContent/>
-      <ResumeYourWorkContent/>
-      <ResumeYourWorkContent/>
-      <ResumeYourWorkContent/>
-      {uuu}
+      {postList.slice(currentPage, currentPage +10).map(v => <ResumeYourWorkContent key={v.id} title={v.title} content={v.body}/>)}   
+      <Footer>
+        <ReactPaginate
+            previousLabel={'PREVIOUS'}
+            nextLabel={'NEXT'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={postList.length}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageClick}
+            containerClassName={'pagination'}
+            activeClassName={'active'}
+            pageClassName={'page'}
+            previousClassName={'previous'}
+            nextClassName={'next'}       
+        />
+      </Footer>
     </>
   );
 }

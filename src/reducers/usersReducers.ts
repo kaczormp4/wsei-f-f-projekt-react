@@ -11,9 +11,7 @@ const defaultState = (): IUsersReducer => ({
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = defaultState(), action: any) => {
-    console.log(action)
-    switch(action.type) {
-        
+    switch(action.type) { 
         case actionTypes.GET_USERS:{
             const data: actionTypes.IUserTypes['GET_USERS'] = action;
             return {

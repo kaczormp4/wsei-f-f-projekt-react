@@ -75,9 +75,6 @@ const MainContent:FC = () => {
             <ResumeYourWorkContainer>
                 <ResumeYourWork/>
             </ResumeYourWorkContainer>
-            <Footer>
-                next 1 2 3 4 prv
-            </Footer>
         </ContainerContent>
     )
 }

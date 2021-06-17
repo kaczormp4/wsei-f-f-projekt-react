@@ -10,9 +10,11 @@ import UserContent from './../UserContent/UserContent';
 import WorkSpaceContent from './../WorkSpaceContent/WorkSpaceContent';
 import EntitiesContent from './../EntitiesContent/EntitiesContent';
 import { getUsers } from '../../actions/usersActions'
+import { getPosts } from '../../actions/postsActions'
 import { useDispatch } from 'react-redux';
 
 type GetUsers = ReturnType<typeof getUsers>
+type GetPosts = ReturnType<typeof getPosts>
 
 const Wrapper = styled.section`
 `;
@@ -30,6 +32,7 @@ const MainPage: FC = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch<GetUsers>(getUsers());
+        dispatch<GetPosts>(getPosts());
       });
     
     
