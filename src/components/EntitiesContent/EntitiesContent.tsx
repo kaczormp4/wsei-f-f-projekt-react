@@ -1,7 +1,9 @@
-import React from 'react'
 import styled from 'styled-components';
 import EntitiesMiniBox from './EntitiesMiniBox/EntitiesMiniBox';
 import Ic from '../icons/I';
+import EntitiesFilter from  './EntitiesFilter/EntitiesFilter';
+import { useState } from 'react';
+
 const EntitiesContentContainer = styled.div`
     width: calc(100% - 400px);
 `;
@@ -65,6 +67,7 @@ const BorderLeft = styled.div`
     margin-left: 5px;
     color: grey;
     padding: 5px;
+    cursor: pointer;
 `;
 
 const MiniBoxesContent = styled.div`
@@ -142,6 +145,7 @@ const ListButton = styled.div`
     }
 `;
 function EntitiesContent() {
+    const [openFilter, isOpen] = useState(false);
     return (
         <EntitiesContentContainer>
             <TopNav>
@@ -157,7 +161,7 @@ function EntitiesContent() {
                 <div>
                     <FilterBarAll><Ic iconName='target.svg'/> ALL <Ic iconName='arrow-down.png' size='0.6'/></FilterBarAll>
                     <DottBox> • • •</DottBox>
-                    <BorderLeft><Ic iconName='sort.svg'/>SORT <Ic iconName='filter.svg'/> FILTERS</BorderLeft>
+                    <BorderLeft onClick={() => isOpen(!openFilter)}><Ic iconName='sort.svg'/>SORT <Ic iconName='filter.svg'/> FILTERS</BorderLeft>
                     <BorderLeft><Ic iconName='resize.svg'/>ARROW</BorderLeft>
                     <BorderLeft><Ic iconName='share.svg'/>SHARE</BorderLeft>
                 </div>
@@ -166,6 +170,7 @@ function EntitiesContent() {
                     <Followed><Ic iconName='wifi-signal.svg'/> FOLLOWED <Ic iconName='arrow-down.png' size='0.6'/></Followed>
                 </div>
             </FilterBar>
+            {openFilter && <EntitiesFilter/>}
             <MiniBoxesContent>
               <EntitiesMiniBox/>
               <EntitiesMiniBox/>
