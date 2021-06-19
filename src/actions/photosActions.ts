@@ -6,10 +6,10 @@ export const getPhotos = () : Promise<ISinglePhoto[]> => ((dispatch:Dispatch) =>
 
         return fetch('https://jsonplaceholder.typicode.com/photos')
         .then(response => response.json())
-        .then((photosList : ISinglePhoto[]) => {
+        .then((photoList : ISinglePhoto[]) => {
             dispatch({
                 type:actionsTypes.GET_PHOTO,
-                photosList
+                photoList
             })
         })
 }) as any;
