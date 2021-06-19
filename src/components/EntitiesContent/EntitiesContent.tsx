@@ -1,8 +1,13 @@
-import styled from 'styled-components';
+import styled , { css } from 'styled-components';
 import EntitiesMiniBox from './EntitiesMiniBox/EntitiesMiniBox';
 import Ic from '../icons/I';
 import EntitiesFilter from  './EntitiesFilter/EntitiesFilter';
 import { useState } from 'react';
+import GridViev from './GridViev';
+import ListViev from './ListView';
+import { IPhotoReducer } from '../../reducers/photosReducers';
+import { IState } from '../../reducers'
+import { useSelector } from 'react-redux';
 
 const EntitiesContentContainer = styled.div`
     width: calc(100% - 400px);
@@ -31,6 +36,7 @@ const FilterBar = styled.div`
     align-items: center;
     justify-content: space-between;
     padding-top: 10px;
+    padding-bottom: 20px;
     div{
         display: flex;
         align-items: center;
@@ -111,9 +117,9 @@ const Followed = styled.div`
         color: #626262;
     }
 `;
-const MosaicButton = styled.div`
+const MosaicButton = styled.div<{isHide?: string}>`
     cursor: pointer;
-    background-color: #eaecf5;
+    
     box-shadow: 0 0 2px 0px #364aa3;
     padding: 10px;
     margin-left: 15px;
@@ -121,14 +127,17 @@ const MosaicButton = styled.div`
     font-weight: 600;
     display:flex;
     align-items: center;
-
+    ${props => props.isHide == 'grid'
+        ? css`background-color: #eaecf5;`
+        :css`background-color: #white;` 
+    }
     &:hover {
         background-color: #cfffa8;
         color: #626262;
     }
 
 `;
-const ListButton = styled.div`
+const ListButton = styled.div<{isHide?: string}>`
     cursor: pointer;
     background-color: white;
     box-shadow: 0 0 2px 0px #364aa3;
@@ -138,14 +147,24 @@ const ListButton = styled.div`
     font-weight: 600;
     display:flex;
     align-items: center;
-
+    ${props => props.isHide == 'list'
+        ? css`background-color: #eaecf5;`
+        :css`background-color: #white;` 
+    }
     &:hover {
         background-color: #cfffa8;
         color: #626262;
     }
 `;
-function EntitiesContent() {
+
+function EntitiesContent(props : {isHide?: boolean}) {
+    const { photoList } = useSelector<IState, IPhotoReducer>(state => ({
+        ...state.photos
+      }));
+      console.log(photoList)
     const [openFilter, isOpen] = useState(false);
+    const [viewType, isViewType] = useState('grid');
+    
     return (
         <EntitiesContentContainer>
             <TopNav>
@@ -153,8 +172,13 @@ function EntitiesContent() {
                         <h3>Entities</h3>
                     </div>
                     <div>
-                        <MosaicButton><Ic iconName='visualization.svg'/> MOSAIC</MosaicButton>
-                        <ListButton><Ic iconName='list.svg'/></ListButton>
+                        <MosaicButton isHide={viewType} onClick={() => isViewType('grid')}>
+                            <Ic iconName='visualization.svg'/> {viewType == 'grid' ? 'MOSAIC' : null}
+                            </MosaicButton>
+                        <ListButton isHide={viewType} onClick={() => isViewType('list')}>
+                            <Ic iconName='list.svg'/>{viewType == 'list' ? 'LIST' : null}
+                        
+                        </ListButton>
                     </div>
             </TopNav>
             <FilterBar>
@@ -171,28 +195,11 @@ function EntitiesContent() {
                 </div>
             </FilterBar>
             {openFilter && <EntitiesFilter/>}
-            <MiniBoxesContent>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-              <EntitiesMiniBox/>
-            </MiniBoxesContent>
+            {viewType === 'grid'?
+              <GridViev photoList={photoList}/>
+              :
+              <ListViev photoList={photoList}/>
+             }
         </EntitiesContentContainer>
     )
 }

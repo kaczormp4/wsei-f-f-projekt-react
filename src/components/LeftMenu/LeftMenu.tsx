@@ -83,17 +83,21 @@ function LeftMenu() {
                     <LeftMainPhotoBoxBottom>
                         <LeftMainPhotoBoxBottomList>
                             <LeftMainPhotoBoxBottomContent>
-                                <EmptyBox>
-                                    <Ic iconName="network.png"/>
-                                    Your network
-                                </EmptyBox>
+                                <Link to='/404' >
+                                    <EmptyBox>
+                                        <Ic iconName="network.png"/>
+                                        Your network
+                                    </EmptyBox>
+                                </Link>
                                 <Ic iconName="user-plus.svg" border={true}/>
                             </LeftMainPhotoBoxBottomContent>
                             <LeftMainPhotoBoxBottomContent>
-                                <EmptyBox>                               
-                                    <Ic iconName="publications.svg"/>
-                                    Your Publications
-                                </EmptyBox>
+                                <Link to='/404' >
+                                    <EmptyBox>                               
+                                        <Ic iconName="publications.svg"/>
+                                        Your Publications
+                                    </EmptyBox>
+                                </Link>              
                                 <Ic iconName="plus.svg" border={true}/>
                             </LeftMainPhotoBoxBottomContent>
                         </LeftMainPhotoBoxBottomList>
@@ -101,16 +105,20 @@ function LeftMenu() {
                 </LeftMainPhotoBox>
                 <ListBelowPhotoBox>
                     <ListBelowPhotoBoxContent>
-                        <EmptyBox> 
-                            <Ic iconName="publications.svg"/>
-                            Publications
-                        </EmptyBox> 
+                        <Link to='/404' >
+                            <EmptyBox> 
+                                <Ic iconName="publications.svg"/>
+                                Publications
+                            </EmptyBox> 
+                        </Link>
                     </ListBelowPhotoBoxContent>
                     <ListBelowPhotoBoxContent>
-                        <EmptyBox> 
-                            <Ic iconName="ecosystem.svg"/>
-                            Ecosystem
-                        </EmptyBox> 
+                        <Link to='/404' >
+                            <EmptyBox> 
+                                <Ic iconName="ecosystem.svg"/>
+                                Ecosystem
+                            </EmptyBox> 
+                        </Link>
                     </ListBelowPhotoBoxContent>
                     <ListBelowPhotoBoxContent>
                         <Link to='/entities' >

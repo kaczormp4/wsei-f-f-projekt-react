@@ -72,27 +72,27 @@ function OpenMenu(props : {isHide?: boolean}) {
                 <Categories>
                     <ul>Platform                     
                         <li><Link to='/'><Ic iconName="house2.svg"/> Home </Link></li>         
-                        <li><Link to='/'><Ic iconName="publications.svg"/> Publications </Link></li>
-                        <li><Link to='/'><Ic iconName="people.svg"/> People </Link></li>
+                        <li><Link to='/404'><Ic iconName="publications.svg"/> Publications </Link></li>
+                        <li><Link to='/404'><Ic iconName="people.svg"/> People </Link></li>
                         <li><Link to='/entities' ><Ic iconName="entities2.svg"/> Entities </Link></li>
-                        <li><Link to='/'><Ic iconName="administration.svg"/> Administration </Link></li>
+                        <li><Link to='/404'><Ic iconName="administration.svg"/> Administration </Link></li>
                     </ul>
                 </Categories>
                 <Categories>
                     <ul>Workspaces
-                        <li><Link to='/'><Ic iconName="house2.svg"/> Client Contract </Link></li>
-                        <li><Link to='/'><Ic iconName="publications.svg"/> Supplier contract </Link></li>
-                        <li><Link to='/'><Ic iconName="people.svg"/> Corporate </Link></li>
-                        <li><Link to='/'><Ic iconName="entities2.svg"/> Group Norms </Link></li>
-                        <li><Link to='/'><Ic iconName="administration.svg"/> Real estate contracts </Link></li>                      
+                        <li><Link to='/404'><Ic iconName="house2.svg"/> Client Contract </Link></li>
+                        <li><Link to='/404'><Ic iconName="publications.svg"/> Supplier contract </Link></li>
+                        <li><Link to='/404'><Ic iconName="people.svg"/> Corporate </Link></li>
+                        <li><Link to='/404'><Ic iconName="entities2.svg"/> Group Norms </Link></li>
+                        <li><Link to='/404'><Ic iconName="administration.svg"/> Real estate contracts </Link></li>                      
                     </ul>
                 </Categories>
             </CategoriesBox>
             <Categories>
                 <ul>Account
                     <li><Link to='/user'><Ic iconName="ecosystem.svg"/> IMIE I NAZNWISKO </Link></li>
-                    <li><Ic iconName="ecosystem.svg"/> Privacy </li>
-                    <li><Ic iconName="ecosystem.svg"/> Settings </li>
+                    <li><Link to='/404'><Ic iconName="ecosystem.svg"/> Privacy</Link> </li>
+                    <li><Link to='/404'><Ic iconName="ecosystem.svg"/> Settings</Link> </li>
                 </ul>
             </Categories>
             <LogOut>

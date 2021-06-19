@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import UserContent from './../UserContent/UserContent';
 import WorkSpaceContent from './../WorkSpaceContent/WorkSpaceContent';
 import EntitiesContent from './../EntitiesContent/EntitiesContent';
+import NotFound from '../NotFound/NotFound';
 import { getUsers } from '../../actions/usersActions'
 import { getPosts } from '../../actions/postsActions'
 import { getPhotos } from '../../actions/photosActions'
@@ -50,6 +51,7 @@ const MainPage: FC = () => {
                         <Route path='/user' exact component={UserContent}/>       
                         <Route path='/workspace' exact component={WorkSpaceContent}/>       
                         <Route path='/entities' exact component={EntitiesContent}/>       
+                        <Route path='/404' exact component={NotFound}/>       
                     </Switch>      
                 </Content>
             </Wrapper>

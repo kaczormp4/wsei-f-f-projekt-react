@@ -13,6 +13,10 @@ const MiniBoxDataLeft = styled.div`
     width: 100px;
     height: 100px;
     background-color: black;
+    img {
+        width: 100px;
+        height: 100px;
+    }
 `;
 const MiniBoxDataRight = styled.div`
     width: 150px;
@@ -24,15 +28,15 @@ const MiniBoxDataRight = styled.div`
         margin:0;
     } 
 `;
-function EntitiesMiniBox() {
+function EntitiesMiniBox({url, title}: any) {
     return (
         <MiniBoxData>
             <MiniBoxDataLeft>
-
+             <img src={url}></img>
             </MiniBoxDataLeft>
             <MiniBoxDataRight>
                 <h3>TITLE</h3>
-                <span>Adipisicing sit exercitation eu mollit.</span>
+                <span>{title}</span>
             </MiniBoxDataRight>
         </MiniBoxData>
     )

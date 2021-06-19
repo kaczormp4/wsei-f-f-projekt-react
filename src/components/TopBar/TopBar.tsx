@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import {Wrapper} from '../../styleHelpers/Components';
+import { Wrapper } from '../../styleHelpers/Components';
 import Ic from '../icons/I';
 import OpenMenu from './OpenMenu/OpenMenu';
+import { Link } from 'react-router-dom';
 
 const EmptyBox = styled.div`
 
@@ -28,16 +29,21 @@ const LeftSite = styled.div`
 `;
 
 const SearchBar = styled.div`
-    outline:2px solid #838383;
+    border:2px solid #83838397;
     box-sizing:border-box;
     padding-top:2px;
+    border-radius:10px;
+    box-sizing: border-box;
+    height:45px;
 `;
 const SearchBarInput = styled.input`
     width:600px;
     height:35px;
     font-size:2em;
+    background-color: transparent;
     border:none;
     outline:none;
+
 `;
 const RightSite = styled.div`
 
@@ -51,7 +57,7 @@ function TopBar() {
     return (
         <Wrapper2>
             <LeftSite onClick={() => setIsOpen(!isOpen)}>
-                <Ic iconName={"logo.png"}/>
+                <Link to='/'><Ic iconName={"logo.png"}/></Link>
                 <Ic iconName={"house2.svg"}/>
                 <span>Home</span>
                 <Ic iconName={"arrow-down.svg"}/>            
@@ -62,9 +68,9 @@ function TopBar() {
                 <Ic iconName={"search.svg"}/>
             </SearchBar>
             <RightSite>
-                <Ic iconName={"house.svg"}/> 
-                <Ic iconName={"comments.svg"}/> 
-                <Ic iconName={"bell.svg"}/> 
+                <Link to='/'><Ic iconName={"house.svg"}/></Link>
+                <Link to='/404'><Ic iconName={"comments.svg"}/></Link>
+                <Link to='/404'><Ic iconName={"bell.svg"}/></Link>
             </RightSite>
         </Wrapper2>
     )
