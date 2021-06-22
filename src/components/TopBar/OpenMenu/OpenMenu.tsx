@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 import { isConstructorDeclaration } from 'typescript';
 import Ic from '../../icons/I';
 import { Link } from 'react-router-dom';
-
+import data from '../../MainContent/data'
+import { IUsersReducer } from '../../../reducers/usersReducers';
+import { IState } from '../../../reducers';
+import { useSelector } from 'react-redux';
 const MenuOpen = styled.div<{isHide?: boolean}>`
     width:250px;
     height:auto;
@@ -39,7 +42,8 @@ const Categories = styled.div`
     text-align:left;    
     ul{
         list-style-type: none;
-        padding-left:10px;
+        padding-left: 10px;
+        
         li{
 
             display:flex;
@@ -53,15 +57,31 @@ const Categories = styled.div`
             img {
                 width:25px;
             }
+            &:hover {
+                background-color: #d3d3d371;
+                transition-duration: 0.4s;
+            }
         }
     }
 `;
 const LogOut = styled.div`
-    background-color:gray;
+    background-color:lightgrey;
     display:flex;
     align-items:center;
+    text-align:center;
+    img {
+        width: 25px;
+    }
 `;
 function OpenMenu(props : {isHide?: boolean}) {
+    const { usersList } = useSelector<IState, IUsersReducer>(state => ({
+        ...state.users
+      }))
+    const workspaceslist = data.allData.map(v => {
+        return <>
+             <li><Link to='/workspace'><Ic iconName={v.icon}/> {v.title} </Link></li>
+         </>
+        })
     return (
         <MenuOpen isHide={props.isHide}>
             <ChoosedOption>
@@ -80,26 +100,27 @@ function OpenMenu(props : {isHide?: boolean}) {
                 </Categories>
                 <Categories>
                     <ul>Workspaces
-                        <li><Link to='/404'><Ic iconName="house2.svg"/> Client Contract </Link></li>
-                        <li><Link to='/404'><Ic iconName="publications.svg"/> Supplier contract </Link></li>
-                        <li><Link to='/404'><Ic iconName="people.svg"/> Corporate </Link></li>
-                        <li><Link to='/404'><Ic iconName="entities2.svg"/> Group Norms </Link></li>
-                        <li><Link to='/404'><Ic iconName="administration.svg"/> Real estate contracts </Link></li>                      
+                        {workspaceslist}        
                     </ul>
                 </Categories>
             </CategoriesBox>
             <Categories>
                 <ul>Account
-                    <li><Link to='/user'><Ic iconName="ecosystem.svg"/> IMIE I NAZNWISKO </Link></li>
-                    <li><Link to='/404'><Ic iconName="ecosystem.svg"/> Privacy</Link> </li>
-                    <li><Link to='/404'><Ic iconName="ecosystem.svg"/> Settings</Link> </li>
+                    <li><Link to='/user'><Ic iconName="ecosystem.svg"/> {usersList[0].name} </Link></li>
+                    <li><Link to='/404'><Ic iconName="privacy (1).svg"/> Privacy</Link> </li>
+                    <li><Link to='/404'><Ic iconName="settings_1.svg"/> Settings</Link> </li>
                 </ul>
             </Categories>
             <LogOut>
-                <Ic iconName="ecosystem.svg"/> Logout
+                <Ic iconName="logout_1.svg"/> Logout
             </LogOut>
         </MenuOpen>
     )
 }
 
 export default OpenMenu;
+
+// <li><Link to='/404'><Ic iconName="publications.svg"/> Supplier contract </Link></li>
+// <li><Link to='/404'><Ic iconName="people.svg"/> Corporate </Link></li>
+// <li><Link to='/404'><Ic iconName="entities2.svg"/> Group Norms </Link></li>
+// <li><Link to='/404'><Ic iconName="administration.svg"/> Real estate contracts </Link></li>   

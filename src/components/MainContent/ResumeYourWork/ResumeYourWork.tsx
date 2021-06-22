@@ -15,10 +15,17 @@ const ResumeYWCFilterBar = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  span {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
   div {
     display: flex;
     div {
       align-items: center;
+      img {
+        width: 20px;
+      }
     }
   }
 `;
@@ -33,8 +40,10 @@ const ResumeYWCBoxContent = styled.div`
 `;
 const InputBox = styled.div`
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  padding-left: 25px;
   margin-right: 25px;
+  border-radius: 10px;
   input {
     border: none;
     outline: none;
@@ -106,13 +115,29 @@ const ResumeYourWork: FC = () => {
   const { photoList } = useSelector<IState, IPhotoReducer>(state => ({
     ...state.photos
   }));
-  console.log(photoList)
+  //console.log(postList)
   const [currentPage , setCurrentPage ] = useState<number>(0);
   const handlePageClick  = (data:any) => {
       const selected = data.selected;
       setCurrentPage(selected);
   }
 
+  const [textInput, setTextInput] = useState('');
+
+ 
+  const handleChange = (event: any) => {
+    setTextInput(event.target.value);
+    filterRows();
+  }
+  const filterRows = () => {
+    let worksFiltered = [...postList];
+    if (textInput !== '') {
+        const filterString = textInput.toLowerCase();
+        worksFiltered = worksFiltered.filter(v => v.title.toLowerCase().includes(filterString));
+    }
+    return worksFiltered;
+  }
+  const filtredRowsList = filterRows();
 
   return (
     <>
@@ -120,15 +145,17 @@ const ResumeYourWork: FC = () => {
         <span>RESUME YOUR WORK</span>
         <div>
           <InputBox>
-            <input></input>&nbsp; Q &nbsp;
+            <input placeholder={'Filter by title..'} onChange={handleChange}></input>&nbsp; Q &nbsp;
           </InputBox>
           <div>
-            <Ic iconName="house.svg" />
-            FOLLOWED <Ic iconName="house.svg" />
+            <Ic iconName="wifi.svg" />
+            FOLLOWED <Ic iconName="arrow-down.svg" size={0.8} />
           </div>
         </div>
       </ResumeYWCFilterBar>
-      {postList.slice(currentPage, currentPage +10).map(v => <ResumeYourWorkContent key={v.id} title={v.title} content={v.body}/>)}   
+      {
+        filtredRowsList.slice(currentPage, currentPage +10).map(v => <ResumeYourWorkContent key={v.id} title={v.title} content={v.body}/>)
+      }
       <Footer>
         <ReactPaginate
             previousLabel={'PREVIOUS'}

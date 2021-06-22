@@ -1,8 +1,9 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import ResumeYourWork from '../MainContent/ResumeYourWork/ResumeYourWork';
-
+import Ic from '../icons/I';
+import filtedata from './filterdata';
 const UserContentContainer = styled.div`
     width: calc(100% - 400px);
     height: 170vh;
@@ -31,6 +32,11 @@ const BannerDesc = styled.div`
     display:flex;
     box-sizing: border-box;
     align-items: center;
+    div {
+        margin:10px;
+        margin-left:20px;
+        text-align: left;
+    }
 `;
 const WorkspacesBox = styled.div`
     margin-top: 10px;
@@ -47,11 +53,19 @@ const WorkspacesMiniBox = styled.div`
     height: 300px;
     display:flex;
     box-sizing: border-box;
-    box-shadow: 0 0 5px 0px gray;
+    box-shadow: 0 0 10px 0px gray;
+    border-radius: 10px;
+    background-color: #d3d3d33e;
     flex-wrap: wrap;
     margin: 15px;
+    padding: 30px;
+    img {
+        width: 100px;
+    }
     div {
+        margin-top: 20px;
         width: 100%;
+        text-align: left;
     }
 `;
 const LastUpdatesBox = styled.div`
@@ -94,12 +108,18 @@ const CategoriesBox = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const CategoriesMiniBox = styled.div`
+const CategoriesMiniBox = styled.div<{bgcolor?: string, border:string}>`
   box-sizing: border-box;
-  border: 1px solid red;
+  box-shadow: 0 0 5px 0 ${props => props.border};
   width: fit-content;
   padding: 10px;
   margin-right: 10px;
+  background-color: ${props => props.bgcolor};
+  &:hover {
+      font-weight: bold;
+      cursor: pointer;
+      padding-top: 2px;
+  }
 `;
 
 function WorkSpaceContent() {
@@ -109,7 +129,7 @@ function WorkSpaceContent() {
                 <BannerImg>
                 </BannerImg>
                 <BannerDesc>
-                    <div>[ICON]</div>
+                    <div><Ic iconName='entities2.svg' size='3'/></div>
                     <div>
                         <h1>Corporate holdings</h1>
                         Ad aliqua excepteur et adipisicing nulla in aliqua irure enim tempor aliqua.
@@ -119,26 +139,26 @@ function WorkSpaceContent() {
             <WorkspacesBox>
                 <WorkspacesMiniBox>
                     <div>
-                        [ICO]
+                        <Ic iconName='entities2.svg'/>
                     </div>
                     <div>
-                        Explore Lore Ipsum
-                    </div>
-                </WorkspacesMiniBox>
-                <WorkspacesMiniBox>
-                    <div>
-                        [ICO]
-                    </div>
-                    <div>
-                        Explore Lore Ipsum
+                    sunt aut facere repellat provident occaecati excepturi optio reprehenderit
                     </div>
                 </WorkspacesMiniBox>
                 <WorkspacesMiniBox>
                     <div>
-                        [ICO]
+                        <Ic iconName='diagram.svg' />
+                    </div>
+                    <div>     
+                      st rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possim
+                    </div>
+                </WorkspacesMiniBox>
+                <WorkspacesMiniBox>
+                    <div>
+                        <Ic iconName='calendar.png' />
                     </div>
                     <div>
-                        Explore Lore Ipsum
+                        eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut
                     </div>
                 </WorkspacesMiniBox> 
             </WorkspacesBox>
@@ -155,18 +175,11 @@ function WorkSpaceContent() {
                     </div>
                 </ResumeYWCFilterBar> */}
                 <CategoriesBox>
-                    <CategoriesMiniBox>
-                        firt Cat
-                    </CategoriesMiniBox>
-                    <CategoriesMiniBox>
-                        firt Cat
-                    </CategoriesMiniBox>
-                    <CategoriesMiniBox>
-                        firt Cat
-                    </CategoriesMiniBox>
-                    <CategoriesMiniBox>
-                        firt Cat
-                    </CategoriesMiniBox>
+                    {filtedata.allData.map(v => (
+                        <CategoriesMiniBox bgcolor={v.color} border={v.borderColor} >
+                        {v.title}
+                        </CategoriesMiniBox>
+                    ))}
                 </CategoriesBox>
                 <ResumeYourWork/>
             </LastUpdatesBox>

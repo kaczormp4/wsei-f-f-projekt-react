@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { IState } from '../../reducers';
+import { useSelector } from 'react-redux';
+import Ic from '../icons/I';
 const UserContentContainer = styled.div`
     width: calc(100% - 400px);
 `;
@@ -11,6 +14,13 @@ const TopNav = styled.div`
     height: 70px;
     display:flex;
     justify-content: flex-end;
+    img {
+        width:20px;
+    }
+    div{
+        display: flex;
+        align-items:center;
+    }
 `;
 const UserInfo = styled.div`
     background-color:white;
@@ -157,13 +167,16 @@ const AmountOfFes = styled.div`
 
 `;
 function UserContent(){
+    const { usersList } = useSelector<IState, IUsersReducer>(state => ({
+        ...state.users
+      }))
     return (
         <UserContentContainer>
             <TopNav>
-                <div>ICO MESSAGE</div>
-                <div>ICO CREATE A REQUEST</div>
-                <div>ICO ADD A CLUSTER</div>
-                <div>ICO X</div>
+                <div><Ic iconName='email.svg'/> <span>MESSAGE</span></div>
+                <div><Ic iconName='document.svg'/><span>REATE A REQUESTC</span></div>
+                <div><Ic iconName='add (1).svg'/><span> ADD A CLUSTER</span></div>
+                <div><Ic iconName='close.svg'/><span></span></div>
             </TopNav>
             <UserInfo>
                 <PhotoBox>
@@ -172,12 +185,14 @@ function UserContent(){
                 </PhotoBox>
                 <MainInfo>
                     <div>
-                        <p>Humwerta Swift</p>
-                        <p>Clifford Chance</p>
-                        <p>New Your Partner</p>
+                        <p>{usersList[0].name}</p>
+                        <p>{usersList[0].company.name}</p>
+                        <p>{usersList[0].address.city}</p>
                     </div>
                     <div>
-                        EMAIL @!#!@!$#!@$
+                    {usersList[0].email}
+                    <br/>
+                    {usersList[0].phone}
                     </div>
                 </MainInfo>
             </UserInfo>

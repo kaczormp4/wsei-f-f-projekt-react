@@ -13,7 +13,7 @@ const data = {
         },
         {
             banner:'https://i.dobrzemieszkaj.pl/i/48/54/01/r3/1920/industrialne-biuro-zobaczcie-wnetrza-zaprojektowane-dla-programistow.jpg',
-            icon:'entities2.svg',
+            icon:'publications.svg',
             title:'Supplier contract',
             smallIcon:'comments.svg',
             smallIconType:'Contract',
@@ -33,7 +33,7 @@ const data = {
         },
         {
             banner:'https://i.dobrzemieszkaj.pl/i/48/54/01/r3/1920/industrialne-biuro-zobaczcie-wnetrza-zaprojektowane-dla-programistow.jpg',
-            icon:'entities2.svg',
+            icon:'publications.svg',
             title:'Supplier contract',
             smallIcon:'comments.svg',
             smallIconType:'Contract',
@@ -53,7 +53,7 @@ const data = {
         },
         {
             banner:'https://i.dobrzemieszkaj.pl/i/48/54/01/r3/1920/industrialne-biuro-zobaczcie-wnetrza-zaprojektowane-dla-programistow.jpg',
-            icon:'entities2.svg',
+            icon:'publications.svg',
             title:'Supplier contract',
             smallIcon:'comments.svg',
             smallIconType:'Contract',
@@ -73,7 +73,7 @@ const data = {
         },
         {
             banner:'https://i.dobrzemieszkaj.pl/i/48/54/01/r3/1920/industrialne-biuro-zobaczcie-wnetrza-zaprojektowane-dla-programistow.jpg',
-            icon:'entities2.svg',
+            icon:'publications.svg',
             title:'Supplier contract',
             smallIcon:'comments.svg',
             smallIconType:'Contract',

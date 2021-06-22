@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Ic from '../icons/I';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-
-
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { IState } from '../../reducers';
+import { useSelector } from 'react-redux';
 const EmptyBox = styled.div`
     display:flex;
     align-items: center;
@@ -35,7 +36,7 @@ const LeftMainPhotoBoxTop = styled.div`
 const LeftMainPhotoBoxAvatar = styled.div`
     width:100px;
     height:100px;
-    background-color:#a02626;
+    border: 1px solid lightgrey;
     margin:auto;
     margin-top:10px;
     box-shadow: 0 0 10px 0px #dfdfdf;
@@ -66,6 +67,11 @@ const ListBelowPhotoBoxContent = styled.li`
 `;
 
 function LeftMenu() {
+    const { usersList } = useSelector<IState, IUsersReducer>(state => ({
+        ...state.users
+      }))
+      console.log(usersList)
+      
     return (
             <LeftMain>
                 <LeftMainPhotoBox>
@@ -75,10 +81,10 @@ function LeftMenu() {
                             <LeftMainPhotoBoxAvatar>
                             photo
                             </LeftMainPhotoBoxAvatar>       
-                            Name Surname
+                            {usersList[0].name}
                         </Link>
                         <br/>    
-                        Job title - Company
+                        {usersList[0].company.name}
                     </LeftMainPhotoBoxTop>  
                     <LeftMainPhotoBoxBottom>
                         <LeftMainPhotoBoxBottomList>

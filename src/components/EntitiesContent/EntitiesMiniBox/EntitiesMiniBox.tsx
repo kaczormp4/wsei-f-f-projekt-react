@@ -35,8 +35,8 @@ function EntitiesMiniBox({url, title}: any) {
              <img src={url}></img>
             </MiniBoxDataLeft>
             <MiniBoxDataRight>
-                <h3>TITLE</h3>
-                <span>{title}</span>
+                <h3>{title.slice(0, 10)}</h3>
+                <span>{title.slice(0, 37)}</span>
             </MiniBoxDataRight>
         </MiniBoxData>
     )

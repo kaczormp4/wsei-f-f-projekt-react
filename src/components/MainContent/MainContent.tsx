@@ -40,10 +40,12 @@ const ResumeYourWorkContainer = styled.div`
     margin-top:20px;
 `;
 
-const Footer = styled.div`
+const Wtitle = styled.div`
     width: 90%;
-    height: 50px;
+    height: 40px;
     margin-top:20px;
+    text-align: left;
+    font-size: 1.3rem;
 `;
 
 const renderWorkspacesMiniBox = data.allData.map(dt => 
@@ -68,7 +70,7 @@ const MainContent:FC = () => {
             <FirstBox>
                 <LatestPublications/>
             </FirstBox>
-            Workspaces
+            <Wtitle>Workspaces</Wtitle>
             <WorkSpacesBox>
                 {renderWorkspacesMiniBox}            
             </WorkSpacesBox>

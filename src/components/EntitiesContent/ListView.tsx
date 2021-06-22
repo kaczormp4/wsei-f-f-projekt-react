@@ -53,7 +53,7 @@ function ListViev({photoList}:any) {
                             <img src={v.url}></img>
                         </MiniBoxDataLeft>
                         <MiniBoxDataRight>
-                            <h3>TITLE</h3>
+                            <h3>{v.title.slice(0, 15)}</h3>
                             <span>{v.title}</span>
                         </MiniBoxDataRight>
                         </MiniBoxData>
