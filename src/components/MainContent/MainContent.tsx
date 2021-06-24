@@ -24,9 +24,28 @@ const WorkSpacesBox = styled.div`
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    /* &::-webkit-scrollbar {
-    display: none;
-  } */
+
+  /* width */
+  ::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b3b3b3;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
   a{
     &:link, &:visited, &:hover, &:active {
      color: black;

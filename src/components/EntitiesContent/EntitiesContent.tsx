@@ -167,11 +167,11 @@ function EntitiesContent(props : {isHide?: boolean}) {
         ...state.photos
       }));
       console.log(photoList)
-    const [openFilter, isOpen] = useState(false);
-    const [viewType, isViewType] = useState('grid');
+    const [openFilter, isOpen] = useState<boolean>(false);
+    const [viewType, isViewType] = useState<string>('grid');
     
     
-    const [textInput, setTextInput] = useState('');
+    const [textInput, setTextInput] = useState<string>('');
 
     
     const handleChange = (event: any) => {
@@ -187,12 +187,42 @@ function EntitiesContent(props : {isHide?: boolean}) {
         return worksFiltered;
     }
     const filtredRowsList = filterRows();
-    const [sorted, isSorted] = useState(filtredRowsList);
-    const sortFun = () => {
+    const [sorting, setSorting] = useState<number>(1);
+    console.log(filtredRowsList)
+    const compare = (a: any, b: any) => {
+        if(sorting === 2){
+            if(a.title < b.title){
+                return -1;
+            }
+            if(a.title > b.title){
+                return 1;
+            }
+            return 0;
+        }
+        else if(sorting === 3){
+            if(a.title < b.title){
+                return 1;
+            }
+            if(a.title > b.title){
+                return -1;
+            }
+            return 0;
+        }else{
+            return 0;
+        }
 
     }
-    console.log(filtredRowsList)
-    console.log(sorted)
+    const changeSort = () =>{
+        if(sorting === 1){
+            setSorting(2)
+        }
+        if(sorting === 2){
+            setSorting(3)
+        }
+        if(sorting === 3){
+            setSorting(1)
+        }
+    }
     return (
         <EntitiesContentContainer>
             <TopNav>
@@ -213,7 +243,7 @@ function EntitiesContent(props : {isHide?: boolean}) {
                     <FilterBarAll><Ic iconName='target.svg'/> ALL <Ic iconName='arrow-down.png' size='0.6'/></FilterBarAll>
                     <DottBox> • • •</DottBox>
                     <BorderLeft>
-                        <div onClick={() => isSorted(filtredRowsList.sort())}><Ic iconName='sort.svg'/>SORT</div>
+                        <div onClick={changeSort}><Ic iconName='sort.svg'/>SORT</div>
                         <div onClick={() => isOpen(!openFilter)}><Ic iconName='filter.svg'/> FILTERS</div> </BorderLeft>
                     <BorderLeft><Ic iconName='resize.svg'/>ARROW</BorderLeft>
                     <BorderLeft onClick={() => navigator.clipboard.writeText(window.location.href)}><Ic iconName='share.svg'/>SHARE</BorderLeft>
@@ -225,9 +255,9 @@ function EntitiesContent(props : {isHide?: boolean}) {
             </FilterBar>
             {openFilter && <EntitiesFilter/>}
             {viewType === 'grid'?
-              <GridViev photoList={filtredRowsList}/>
+              <GridViev photoList={filtredRowsList.sort(compare)}/>
               :
-              <ListViev photoList={filtredRowsList}/>
+              <ListViev photoList={filtredRowsList.sort(compare)}/>
              }
         </EntitiesContentContainer>
     )
