@@ -1,13 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import EntitiesMiniBox from './EntitiesMiniBox/EntitiesMiniBox';
 import Ic from '../icons/I';
 import EntitiesFilter from  './EntitiesFilter/EntitiesFilter';
 import { useState } from 'react';
 
-const MiniBoxesContent = styled.div`
+const MiniBoxesContent = styled.div<{fullScreen?:boolean}>`
+    ${props => props.fullScreen
+         ? css`width: 90%;`
+         : css`width: 100%;` 
+    }
     background-color:white;
-    width: 90%;
-    height: auto;
+
+    min-height: 90vh;
     display:flex;
     flex-wrap: wrap;
     padding-bottom: 20px;
@@ -15,12 +19,12 @@ const MiniBoxesContent = styled.div`
 `;
 
 
-function GridViev({photoList}: any) {
+function GridViev(props: any) {
     return (
         <MiniBoxesContent>
             
             {
-                photoList.slice(0,50).map((v: any) => {
+                props.photoList.slice(0,50).map((v: any) => {
                     return (
                         <EntitiesMiniBox url={v.url} title={v.title}/>
                     )

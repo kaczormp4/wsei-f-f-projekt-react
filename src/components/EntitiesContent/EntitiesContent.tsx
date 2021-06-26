@@ -9,12 +9,15 @@ import { IPhotoReducer } from '../../reducers/photosReducers';
 import { IState } from '../../reducers'
 import { useSelector } from 'react-redux';
 
-const EntitiesContentContainer = styled.div`
-    width: calc(100% - 400px);
+const EntitiesContentContainer = styled.div<{fullScreen?:boolean}>`
+    ${props => props.fullScreen
+        ? css`position:absolute`
+        :css`width: calc(100% - 550px);` 
+    }
 `;
 const TopNav = styled.div`
     background-color:white;
-    width: 90%;
+    width:100%;
     height: 70px;
     display:flex;
     justify-content: space-between;
@@ -31,7 +34,7 @@ const TopNav = styled.div`
 `;
 const FilterBar = styled.div`
     background-color:white;
-    width: 90%;
+    width:100%;
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -162,7 +165,7 @@ const ListButton = styled.div<{isHide?: string}>`
     }
 `;
 
-function EntitiesContent(props : {isHide?: boolean}) {
+function EntitiesContent(props : {isHide?: boolean, fullScreen?: boolean}) {
     const { photoList } = useSelector<IState, IPhotoReducer>(state => ({
         ...state.photos
       }));
@@ -172,8 +175,9 @@ function EntitiesContent(props : {isHide?: boolean}) {
     
     
     const [textInput, setTextInput] = useState<string>('');
+    const [fullScreen, setfullScreen] = useState<boolean>(false);
 
-    
+    console.log(fullScreen)
     const handleChange = (event: any) => {
         setTextInput(event.target.value);
         filterRows();
@@ -188,7 +192,7 @@ function EntitiesContent(props : {isHide?: boolean}) {
     }
     const filtredRowsList = filterRows();
     const [sorting, setSorting] = useState<number>(1);
-    console.log(filtredRowsList)
+    // console.log(filtredRowsList)
     const compare = (a: any, b: any) => {
         if(sorting === 2){
             if(a.title < b.title){
@@ -224,7 +228,7 @@ function EntitiesContent(props : {isHide?: boolean}) {
         }
     }
     return (
-        <EntitiesContentContainer>
+        <EntitiesContentContainer fullScreen={fullScreen} >
             <TopNav>
                     <div>
                         <h3>Entities</h3>
@@ -245,7 +249,7 @@ function EntitiesContent(props : {isHide?: boolean}) {
                     <BorderLeft>
                         <div onClick={changeSort}><Ic iconName='sort.svg'/>SORT</div>
                         <div onClick={() => isOpen(!openFilter)}><Ic iconName='filter.svg'/> FILTERS</div> </BorderLeft>
-                    <BorderLeft><Ic iconName='resize.svg'/>ARROW</BorderLeft>
+                    <BorderLeft onClick={() => setfullScreen(!fullScreen)} ><Ic iconName='resize.svg'/>ARROW</BorderLeft>
                     <BorderLeft onClick={() => navigator.clipboard.writeText(window.location.href)}><Ic iconName='share.svg'/>SHARE</BorderLeft>
                 </div>
                 <div>
@@ -255,9 +259,9 @@ function EntitiesContent(props : {isHide?: boolean}) {
             </FilterBar>
             {openFilter && <EntitiesFilter/>}
             {viewType === 'grid'?
-              <GridViev photoList={filtredRowsList.sort(compare)}/>
+              <GridViev fullScreen={fullScreen} photoList={filtredRowsList.sort(compare)}/>
               :
-              <ListViev photoList={filtredRowsList.sort(compare)}/>
+              <ListViev fullScreen={fullScreen} photoList={filtredRowsList.sort(compare)}/>
              }
         </EntitiesContentContainer>
     )
